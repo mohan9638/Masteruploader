@@ -1,15 +1,15 @@
 
 {
-    "name": "𝐓𝐞𝐱𝐭 Uploader 『ᎷΔŞŦᏋᏒ』BOT",
+    "name": " 𝙎𝘼𝙄𝙉𝙄 𝘽𝙊𝙏𝙎",
     "description": "Download videos from various websites using this Telegram bot.",
-    "logo": "https://telegra.ph/file/32f106d692ff33700c464.jpg",
+    "logo": "https://tinypic.host/images/2025/02/07/DeWatermark.ai_1738952933236-1.png",
     "keywords": [
         "drm-video-dl",
         "video-extract",
         "pyrogram"
     ],
-    "repository": "https://github.com/Master/DRM",
-    "success_url": "https://telegram.me/classtubeofficial",
+    "repository": "https://github.com/nikhilsainiop/Masteruploader",
+    "success_url": "https://github.com/nikhilsainiop/Masteruploader",
     "stack": "container",
     "env": {
         "API_ID": {
