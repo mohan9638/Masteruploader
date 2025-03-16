@@ -6,7 +6,7 @@ from config import Config
 
 class Data:
     START = (
-        "🌟 Welcome Mere Bhai {0}! 🌟\n\n"
+        "🌟 Welcome {0}! 🌟\n\n"
     )
 
 @bot.on_message(filters.command("start"))
@@ -57,24 +57,12 @@ async def start(bot, m: Message):
         await asyncio.sleep(2)
         await start_message.edit_text(
             Data.START.format(m.from_user.mention, mention) +
-            "**You are currently using the free version.** 🆓\n\n"
-            "**I'm here to make your life easier by downloading videos from your **.txt** file 📄 and uploading them directly to Telegram!**\n\n"
-            f"**Want to get started? 🌟 Contact {Config.CREDIT} to Get The Subscription 🎫 and unlock the full potential of your new bot! 🔓**"
+            "`Great! You are a premium member! `🌟\n\n"
+            f"**If you face any problem contact - ** {Config.CREDIT}"
         )
 
 
 @bot.on_message(filters.command("stop"))
 async def restart_handler(bot, m):
-    if m.chat.id not in Config.AUTH_USERS:
-        print(f"User ID not in AUTH_USERS", m.chat.id)
-        await bot.send_message(
-            m.chat.id, 
-            f"**Oopss! You are not a Premium member **\n\n"
-            f"**PLEASE UPGRADE YOUR PLAN**\n\n"
-            f"**/upgrade for Plan Details**\n"
-            f"**Send me your user id for authorization your User id** - `{m.chat.id}`\n\n"
-            f"**Sab kuch free me chahiye kya be laude**"
-        )
-        return
     await helper.clear(m)
 
