@@ -31,7 +31,6 @@ if __name__ == "__main__":
             await bot.send_message(chat_id=user_id, text=f"__Congrats! You Are DRM member ... if You get any error then contact me -  {Config.CREDIT}__ ")
         except Exception as e:
             LOGGER.error(f"Failed to send message to user {user_id}: {e}")
-            continue
         await idle()
     asyncio.get_event_loop().run_until_complete(main())
     LOGGER.info("<--- Bot Stopped --->")
