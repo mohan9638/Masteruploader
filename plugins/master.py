@@ -4,7 +4,7 @@ import shutil
 import os
 from master import masterdl
 
-@bot.on_message(filters.command("drm"))#Here You Can Change Command
+@bot.on_message(filters.command("drm"))
 async def account_login(bot, m):
     try:
         Credit = Config.CREDIT
@@ -17,47 +17,43 @@ async def account_login(bot, m):
         os.makedirs(temp_dir)
         links, file_name = await masterdl.process_text_file_or_input(input)
         await editable.edit(f"Total links🔗 found are __{len(links)}__\n\nSend From where you want to download initial is __1__")
-        if m.chat.id not in Config.AUTH_USERS:
-            print(f"User ID not in AUTH_USERS", m.chat.id)
-            await bot.send_message(m.chat.id, f"__Oopss! You are not a Premium member __\n\n__PLEASE UPGRADE YOUR PLAN__\n\n**/upgrade for Plan Details**\n__Send me your user id for authorization your User id__ -     `{m.chat.id}`\n\n__Sab kuch free me chahiye kya be laude__")
-            return
         input0=await bot.listen(chat_id=m.chat.id)
         raw_text = input0.text
         await input0.delete(True)
 
-        await editable.edit("__Enter Batch Name or send /d for grabbing from text filename.__")
+        await editable.edit("__Enter Batch Name or send 1 for grabbing from text filename.__")
         input1=await bot.listen(chat_id=m.chat.id)
         raw_text0 = input1.text
         await input1.delete(True)
-        if raw_text0 == '/d':
+        if raw_text0 == '1':
             b_name = file_name
         else:
             b_name = raw_text0
 
-        await editable.edit("__Enter resolution or Video Quality__\n\nEg - `360` or `480` or `720`")
+        await editable.edit("__Enter resolution__\n\nEg - `360` or `480` or `720`")
         input2=await bot.listen(chat_id=m.chat.id)
         raw_text2 = input2.text
         await input2.delete(True)
 
-        await editable.edit(f"__Enter Your Channel Name or Owner Name or /d__\n\nEg : Dᴏᴡɴʟᴏᴀᴅ Bʏ : `{Credit}❤️`")
+        await editable.edit(f"__Enter Your Name\n\nSend 1 for `{Credit}`")
         input3=await bot.listen(chat_id=m.chat.id)
         raw_text3 = input3.text
         await input3.delete(True)
-        if raw_text3 == '/d':
+        if raw_text3 == '1':
             MR = Credit
         else:
             MR = raw_text3
 
-        await editable.edit("__If You download Physics Wallah Video Then Please Provide Any Working Token Otherwise I can't download Your Videos__\n\n__If You Not Download PW videos then Send__ **/d**")
+        await editable.edit("Send PW Working Token\nFor default send 1")
         input4 = await bot.listen(chat_id=m.chat.id)
         token = input4.text
         await input4.delete(True)
-        await editable.edit("Now send the __Thumb URL__\nEg : `https://telegra.ph/file/0eca3245df8a40c7e68d4.jpg`\n\nor Send `no`")
+        await editable.edit("Now send the __Thumb URL__\n\nor Send `no`")
         input6=await bot.listen(chat_id=m.chat.id)
         thumb = input6.text
         await input6.delete(True)
         
-        await editable.edit("__Please Provide Channel id or where you want to Upload video or Sent Video otherwise `/d` __\n\n__And make me admin in this channel then i can able to Upload otherwise i can't__")
+        await editable.edit("__Please Provide Channel id to Upload video otherwise `/d` __\n\n__And make me admin in this channel then i can able to Upload otherwise i can't__")
         input7=await bot.listen(chat_id=m.chat.id)
         if "/d" in input7.text:
             channel_id = m.chat.id
@@ -65,7 +61,6 @@ async def account_login(bot, m):
             channel_id = input7.text
 
         await input7.delete()
-        await editable.edit("__Malik mera time aa gya mai chala\n\nTum apna dekh lo__")
         try:
             await bot.send_message(chat_id=channel_id, text=f'🎯**Target Batch - {b_name}**')
         except Exception as e:
